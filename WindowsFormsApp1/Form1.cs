@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Newtonsoft.Json;
@@ -149,6 +148,75 @@ namespace WindowsFormsApp1
                 chart1.Series[2].Points.AddXY(i, y1[i]*scale1);
                 chart1.Series[3].Points.AddXY(i, y2[i]*scale2);
             }
+        }
+
+        private void btn_Bayes_Click(object sender, EventArgs e)
+        {
+            if (!(chart1.Series.Count / 2 <= 1))
+            {
+                List<Annotation> line = chart1.Annotations.Where(a => a.Name.Contains("Bayes")).ToList();
+                foreach (var item in line)
+                {
+                    chart1.Annotations.Remove(item);
+                }
+                findLine();
+            }
+        }
+
+        public void findLine()
+        {
+            List<Series> s_list = new List<Series>();
+            for (int i = 0; i < chart1.Series.Count/2; i ++)
+            {
+                s_list.Add(chart1.Series[i]);
+            }
+
+            int count = 0;
+            string current = "None";
+            for (int i = 0; i < s_list[0].Points.Count; i++)
+            {                
+                double max = s_list.Select(x => x.Points[i].YValues[0]).Max();
+                //Console.WriteLine(max.ToString());
+                if (max != 0)
+                {
+                    Series s = s_list[s_list.Select(x => x.Points[i].YValues[0]).ToList().IndexOf(max)];
+                    Console.WriteLine(s.Name);
+                    if (current != s.Name)
+                    {
+                        if (count != 0)
+                        {
+                            VerticalLineAnnotation VA = new VerticalLineAnnotation();
+                            VA.AxisX = chart1.ChartAreas[0].AxisX;
+                            VA.IsInfinitive = true;
+                            VA.LineColor = Color.Black;
+                            VA.LineWidth = 3;
+                            VA.LineDashStyle = ChartDashStyle.Dash;
+                            VA.X = i;
+                            VA.Name = "VA Bayes : " + i;
+                            chart1.Annotations.Add(VA);
+
+                            TextAnnotation TA = new TextAnnotation();
+                            TA.AxisX = chart1.ChartAreas[0].AxisX;
+                            TA.X = i;
+                            TA.Y = 0;
+                            TA.Name = "TA Bayes : " + i;
+                            TA.Text = i + "";
+                            if (asc.currentSize != 0)
+                            {
+                                TA.Font = new Font(TA.Font.Name, asc.currentSize);
+                            }
+                            chart1.Annotations.Add(TA);
+                        }
+                        current = s.Name;
+                        count++;
+                    }
+                }
+            }
+        }
+
+        private void btn_kmeans_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("別按了啦我還沒做這個功能", "住手");
         }
     }
 }

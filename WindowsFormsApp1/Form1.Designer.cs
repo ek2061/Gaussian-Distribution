@@ -42,12 +42,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btn_Run_and_Plot = new System.Windows.Forms.Button();
+            this.btn_Bayes = new System.Windows.Forms.Button();
+            this.btn_kmeans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Random_Parameter
             // 
-            this.btn_Random_Parameter.Location = new System.Drawing.Point(161, 183);
+            this.btn_Random_Parameter.Location = new System.Drawing.Point(163, 165);
             this.btn_Random_Parameter.Name = "btn_Random_Parameter";
             this.btn_Random_Parameter.Size = new System.Drawing.Size(331, 30);
             this.btn_Random_Parameter.TabIndex = 0;
@@ -142,7 +144,7 @@
             // 
             // btn_Run_and_Plot
             // 
-            this.btn_Run_and_Plot.Location = new System.Drawing.Point(546, 183);
+            this.btn_Run_and_Plot.Location = new System.Drawing.Point(546, 165);
             this.btn_Run_and_Plot.Name = "btn_Run_and_Plot";
             this.btn_Run_and_Plot.Size = new System.Drawing.Size(331, 30);
             this.btn_Run_and_Plot.TabIndex = 11;
@@ -150,11 +152,33 @@
             this.btn_Run_and_Plot.UseVisualStyleBackColor = true;
             this.btn_Run_and_Plot.Click += new System.EventHandler(this.Run_and_Plot);
             // 
+            // btn_Bayes
+            // 
+            this.btn_Bayes.Location = new System.Drawing.Point(163, 212);
+            this.btn_Bayes.Name = "btn_Bayes";
+            this.btn_Bayes.Size = new System.Drawing.Size(331, 30);
+            this.btn_Bayes.TabIndex = 12;
+            this.btn_Bayes.Text = "Bayes\' theorem";
+            this.btn_Bayes.UseVisualStyleBackColor = true;
+            this.btn_Bayes.Click += new System.EventHandler(this.btn_Bayes_Click);
+            // 
+            // btn_kmeans
+            // 
+            this.btn_kmeans.Location = new System.Drawing.Point(546, 212);
+            this.btn_kmeans.Name = "btn_kmeans";
+            this.btn_kmeans.Size = new System.Drawing.Size(331, 30);
+            this.btn_kmeans.TabIndex = 13;
+            this.btn_kmeans.Text = "K-means";
+            this.btn_kmeans.UseVisualStyleBackColor = true;
+            this.btn_kmeans.Click += new System.EventHandler(this.btn_kmeans_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 647);
+            this.Controls.Add(this.btn_kmeans);
+            this.Controls.Add(this.btn_Bayes);
             this.Controls.Add(this.btn_Run_and_Plot);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label4);
@@ -189,6 +213,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btn_Run_and_Plot;
+        private System.Windows.Forms.Button btn_Bayes;
+        private System.Windows.Forms.Button btn_kmeans;
     }
 }
 
