@@ -1,4 +1,4 @@
-# Gaussian-Distribution
+# Gaussian-Distribution C#
 Gaussian-Distribution using C# and Numpy
 
 Visual Studio 2017
